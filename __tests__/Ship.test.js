@@ -6,6 +6,7 @@ const Port = require("../src/Port");
 
 describe("Ship", () => {
     const ramkinHall = new Port("Ramkin Hall");
+    const quirm = new Port("Quirm");
     const wonderfulFanny = new Ship(ramkinHall);
 
     it("can be instantiated", () => {
@@ -13,21 +14,21 @@ describe("Ship", () => {
     })
 
     it("has a starting port", () => {
-        expect(wonderfulFanny.startingPort).toBeInstanceOf(Port);
-        expect(wonderfulFanny.startingPort).toBe(ramkinHall);
+        expect(wonderfulFanny.currentPort).toBeInstanceOf(Port);
+        expect(wonderfulFanny.currentPort).toBe(ramkinHall);
     })
 
     it("can set sail from port", () => {
         wonderfulFanny.setSail();
 
-        expect(wonderfulFanny.startingPort).toBeFalsy();
+        expect(wonderfulFanny.currentPort).toBeFalsy();
     })
 
     it("can dock", () => {
-        wonderfulFanny.dock("Quirm");
+        wonderfulFanny.dock(quirm);
 
-        expect(wonderfulFanny.port).toBeInstanceOf(Port);
-        expect(wonderfulFanny.port.portName).toBe("Quirm");
+        expect(wonderfulFanny.currentPort).toBeInstanceOf(Port);
+        expect(wonderfulFanny.currentPort.portName).toBe("Quirm");
     })
     
 })

@@ -1,16 +1,16 @@
-const Port = require("./Port");
+const currentPort = require("./Port");
 
 class Ship {
-    constructor(startingPort) {
-        this.startingPort = startingPort;
+    constructor(currentPort) {
+        this.currentPort = currentPort;
     }
 
     setSail() {
-        delete this.startingPort;
+        this.currentPort = null;
     }
 
-    dock(portName) {
-        this.port = new Port(portName);
+    dock(newPort) {
+        this.currentPort = newPort;
     }
 }
 
