@@ -3,18 +3,20 @@
 
 const Ship = require("../src/Ship");
 const Port = require("../src/Port");
+const Itinerary = require("../src/Itinerary");
 
 describe("Ship", () => {
     const ramkinHall = new Port("Ramkin Hall");
     const quirm = new Port("Quirm");
-    const wonderfulFanny = new Ship(ramkinHall);
+    const itinerary = new Itinerary([ramkinHall, quirm])
+    const wonderfulFanny = new Ship(itinerary);
+
 
     it("can be instantiated", () => {
-        expect(new Ship()).toBeInstanceOf(Object);
+        expect(new Ship(itinerary)).toBeInstanceOf(Object);
     })
 
     it("has a starting port", () => {
-        expect(wonderfulFanny.currentPort).toBeInstanceOf(Port);
         expect(wonderfulFanny.currentPort).toBe(ramkinHall);
     })
 
@@ -22,13 +24,17 @@ describe("Ship", () => {
         wonderfulFanny.setSail();
 
         expect(wonderfulFanny.currentPort).toBeFalsy();
+        expect(wonderfulFanny.previousPort).toBe(ramkinHall);
     })
 
     it("can dock", () => {
-        wonderfulFanny.dock(quirm);
+        wonderfulFanny.dock();
 
-        expect(wonderfulFanny.currentPort).toBeInstanceOf(Port);
-        expect(wonderfulFanny.currentPort.portName).toBe("Quirm");
+        expect(wonderfulFanny.currentPort).toBe(quirm);
+    })
+
+    it("can't sail further than its itinerary", () => {
+        expect(() => wonderfulFanny.setSail()).toThrowError('End of itinerary reached');
     })
     
 })
