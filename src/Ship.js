@@ -6,7 +6,6 @@ class Ship {
         this.currentPort = itinerary.ports[0];
         this.previousPort = null;
 
-        // this.currentPort.ships.push(this);
         this.currentPort.addShip(this);
     }
 

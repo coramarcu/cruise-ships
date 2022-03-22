@@ -9,9 +9,9 @@ const Port = require("../src/Port");
 const Itinerary = require("../src/Itinerary");
 
 describe("Ship", () => {
-    const ramkinHall = new Port("Ramkin Hall");
-    const quirm = new Port("Quirm");
-    const itinerary = new Itinerary([ramkinHall, quirm])
+    const ramkinHallPort = {name: "Ramkin Hall", ships: [], addShip: jest.fn(), removeShip: jest.fn()};
+    const quirmPort = {name: "Quirm", ships: [], addShip: jest.fn(), removeShip: jest.fn()};
+    const itinerary = {ports: [ramkinHallPort, quirmPort]};
     const wonderfulFanny = new Ship(itinerary);
 
 
@@ -20,26 +20,27 @@ describe("Ship", () => {
     })
 
     it("has a starting port", () => {
-        expect(wonderfulFanny.currentPort).toBe(ramkinHall);
+        expect(wonderfulFanny.currentPort).toBe(ramkinHallPort);
     })
 
     it('gets added to port on instantiation', () => {
-        expect(wonderfulFanny.currentPort.ships).toContain(wonderfulFanny);
+        console.log(ramkinHallPort.ships);
+        expect(ramkinHallPort.addShip).toHaveBeenCalledWith(wonderfulFanny);
     })
 
     it("can set sail from port", () => {
         wonderfulFanny.setSail();
 
         expect(wonderfulFanny.currentPort).toBeFalsy();
-        expect(wonderfulFanny.previousPort).toBe(ramkinHall);
-        expect(wonderfulFanny.previousPort.ships).not.toContain(wonderfulFanny);
+        expect(wonderfulFanny.previousPort).toBe(ramkinHallPort);
+        expect(ramkinHallPort.removeShip).toHaveBeenCalledWith(wonderfulFanny);
     })
 
     it("can dock at a different port", () => {
         wonderfulFanny.dock();
 
-        expect(wonderfulFanny.currentPort).toBe(quirm);
-        expect(quirm.ships).toContain(wonderfulFanny);
+        expect(wonderfulFanny.currentPort).toBe(quirmPort);
+        expect(quirmPort.ships).toContain(wonderfulFanny);
     })
 
     it("can't sail further than its itinerary", () => {

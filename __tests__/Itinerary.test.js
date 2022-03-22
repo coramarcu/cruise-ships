@@ -2,16 +2,16 @@ const Itinerary = require('../src/Itinerary.js');
 const Port = require('../src/Port.js');
 
 describe('Itinerary', () => {
-    const port1 = new Port('Port1')
-    const port2 = new Port('Port2')
+    const ramkinHall = new Port('Ramkin Hall')
+    const quirm = new Port('Quirm')
 
-    const itineraryOne = new Itinerary([port1, port2]);
+    const itineraryOne = new Itinerary([ramkinHall, quirm]);
     
     it('can be instantiated', () => {
         expect(itineraryOne).toBeInstanceOf(Object);
     })
 
     it('has a ports property', () => {
-        expect(itineraryOne.ports).toEqual([port1, port2]);
+        expect(itineraryOne.ports).toEqual([ramkinHall, quirm]);
     })
 })
