@@ -1,17 +1,15 @@
 const Itinerary = require('../src/Itinerary.js');
-const Port = require('../src/Port.js');
 
 describe('Itinerary', () => {
-    const ramkinHall = new Port('Ramkin Hall')
-    const quirm = new Port('Quirm')
-
-    const itineraryOne = new Itinerary([ramkinHall, quirm]);
+    const ramkinHallPort = {name: "Ramkin Hall", ships: [], addShip: jest.fn(), removeShip: jest.fn()};
+    const quirmPort = {name: "Quirm", ships: [], addShip: jest.fn(), removeShip: jest.fn()};
+    const itineraryOne = new Itinerary([ramkinHallPort, quirmPort]);
     
     it('can be instantiated', () => {
         expect(itineraryOne).toBeInstanceOf(Object);
     })
 
     it('has a ports property', () => {
-        expect(itineraryOne.ports).toEqual([ramkinHall, quirm]);
+        expect(itineraryOne.ports).toEqual([ramkinHallPort, quirmPort]);
     })
 })
