@@ -40,7 +40,7 @@ describe("Ship", () => {
         wonderfulFanny.dock();
 
         expect(wonderfulFanny.currentPort).toBe(quirmPort);
-        expect(quirmPort.ships).toContain(wonderfulFanny);
+        expect(quirmPort.addShip).toHaveBeenCalledWith(wonderfulFanny);
     })
 
     it("can't sail further than its itinerary", () => {

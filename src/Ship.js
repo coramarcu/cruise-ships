@@ -27,7 +27,7 @@ class Ship {
         const previousPortIndex = itinerary.ports.indexOf(this.previousPort); 
         this.currentPort = itinerary.ports[previousPortIndex + 1];
 
-        this.currentPort.ships.push(this);
+        this.currentPort.addShip(this);
     }
 }
 
