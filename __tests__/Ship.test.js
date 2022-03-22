@@ -5,8 +5,6 @@
 // so the ship called 'Wonderful Fanny' is really not my fault.
 
 const Ship = require("../src/Ship");
-const Port = require("../src/Port");
-const Itinerary = require("../src/Itinerary");
 
 describe("Ship", () => {
     const ramkinHallPort = {name: "Ramkin Hall", ships: [], addShip: jest.fn(), removeShip: jest.fn()};
@@ -24,7 +22,6 @@ describe("Ship", () => {
     })
 
     it('gets added to port on instantiation', () => {
-        console.log(ramkinHallPort.ships);
         expect(ramkinHallPort.addShip).toHaveBeenCalledWith(wonderfulFanny);
     })
 
