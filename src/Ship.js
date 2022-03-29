@@ -1,5 +1,3 @@
-const currentPort = require("./Port");
-
 (function() {
     class Ship {
         constructor(itinerary) {
