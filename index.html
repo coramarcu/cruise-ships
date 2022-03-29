@@ -12,6 +12,7 @@
     <div id="viewport">
         <div id="ports"></div>
         <div id="ship"></div>
+        <button id="sailbutton">Set sail >></button>
     </div>
 
     <!-- ===== SCRIPTS ===== -->
@@ -21,16 +22,14 @@
     <script src="/src/Ship.js"></script>
 
     <script>
-        const controller = new Controller();
         const quirmPort = new Port('Quirm');
         const ramkinHallPort = new Port('Ramkin Hall');
         const ankhMorporkPort = new Port('Ankh Morpork');
         const itinerary = new Itinerary([quirmPort, ramkinHallPort, ankhMorporkPort]);
+        const wonderfulFannyShip = new Ship(itinerary);
+        const controller = new Controller(wonderfulFannyShip);
 
         controller.renderPorts(itinerary.ports);
-
-        const wonderfulFannyShip = new Ship(itinerary);
-
         controller.renderShip(wonderfulFannyShip);
 
     </script>
