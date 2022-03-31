@@ -15,7 +15,7 @@
         }
 
         changeWater() {
-            let viewport = document.querySelector('#viewport');
+            const viewport = document.querySelector('#viewport');
 
             if(!this.waterState) {
                 viewport.style.backgroundImage = "url(../images/water1.png)";
@@ -40,7 +40,6 @@
                 
                 const portsElementWidth = parseInt(portsElement.style.width, 10);
                 portsElement.style.width = `${portsElementWidth + 256}px`;
-                console.log(portsElement.style.width);
             });
         }
 
@@ -54,12 +53,14 @@
         }
 
         setSail() {
+            this.renderMessage(`Leaving ${this.ship.currentPort.portName}`);
+
             const currentPortIndex = this.ship.itinerary.ports.indexOf(this.ship.currentPort);
             const nextPortindex = currentPortIndex + 1;
             const nextPortElement = document.querySelector(`[data-port-index='${nextPortindex}']`);
 
             if (!nextPortElement) {
-                return alert('End of the line!');
+                return this.renderMessage('End of line!')
             }
 
             const shipElement = document.querySelector('#ship');
@@ -68,11 +69,24 @@
                 if (shipLeft === (nextPortElement.offsetLeft -32)) {
                     this.ship.setSail();
                     this.ship.dock();
+                    this.renderMessage(`Docking at ${this.ship.currentPort.portName}`);
                     clearInterval(sailInterval);
                 }
 
                 shipElement.style.left = `${shipLeft +1}px`;
-            }, 5);            
+            }, 10);            
+
+        }
+
+        renderMessage(message) {
+            const viewport = document.querySelector('#viewport');
+            const messageElement = document.createElement('div');
+
+            messageElement.setAttribute('id', 'message');
+            viewport.appendChild(messageElement);
+            messageElement.innerHTML = message;
+
+            const timeout = setTimeout(() => {viewport.removeChild(messageElement)}, 2000);
         }
     }
 

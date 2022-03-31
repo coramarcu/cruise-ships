@@ -15,6 +15,7 @@ body {
     position: relative;
     overflow-x: auto;
     background-image: url("/images/water0.png");
+    font-family: monospace;
 }
 
 #ports {
@@ -42,7 +43,6 @@ body {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    font-family: monospace;
     font-size: 1.2rem;
     font-weight: 600;
     padding: .5em 1.5em;
@@ -53,4 +53,14 @@ body {
 
 #sailbutton:hover {
     background-color: rgb(140, 77, 108);
+}
+
+#message{
+    font-size: 1.2rem;
+    background-color: bisque;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    padding: .55em;
 }
