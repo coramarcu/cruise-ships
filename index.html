@@ -10,7 +10,14 @@
 </head>
 <body>
     <div class="container">
-        <div id="heads-up"></div>
+        <div id="controls">
+            <form id="form" method="post">
+                <label for="port-name">Add port:</label>
+                <input type="text" id="port-name" name="port-name" placeholder="Where next?">
+                <input type="submit" id="submit-btn" name="submit-btn">
+            </form>
+            <div id="heads-up"></div>
+        </div>
     
         <div id="viewport">
             <div id="ports"></div>

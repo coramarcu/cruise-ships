@@ -66,13 +66,53 @@ body {
     padding: .55em;
 }
 
-#heads-up {
-    color: bisque;
-    min-height: 2rem;
-    text-align: end;
+#controls {
+    display: flex;
+    justify-content: space-between;
+    min-height: 3rem;
     font-size: 1rem;
     font-weight: 600;
     letter-spacing: .1em;
     line-height: 1.5em;
     margin-bottom: 1rem;
+}
+
+#heads-up {
+    color: bisque;
+    align-self: flex-end;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(186, 104, 145);
+    color: bisque;
+    padding: 1rem;
+}
+
+input {
+    padding: .5em;
+    font-family: inherit;
+    border: none;
+}
+
+label {
+    font-size: 1.2rem;
+    margin-bottom: .3rem;
+}
+
+#port-name {
+    background-color: bisque;
+    margin-bottom: .5rem;
+}
+
+#submit-btn {
+    font-weight: 600;
+    letter-spacing: .1em;
+    background-color: rgb(25, 174, 255);
+    color: bisque;
+}
+
+#submit-btn:hover {
+    background-color: rgb(20, 138, 201);
 }
