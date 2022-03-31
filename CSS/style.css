@@ -3,10 +3,12 @@ html, body {
 }
 
 body {
-    background-color: black;
+    background-color: rgb(54, 54, 54);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    font-family: monospace;
 }
 
 #viewport {
@@ -15,7 +17,6 @@ body {
     position: relative;
     overflow-x: auto;
     background-image: url("/images/water0.png");
-    font-family: monospace;
 }
 
 #ports {
@@ -63,4 +64,15 @@ body {
     bottom: 0;
     text-align: center;
     padding: .55em;
+}
+
+#heads-up {
+    color: bisque;
+    min-height: 2rem;
+    text-align: end;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    line-height: 1.5em;
+    margin-bottom: 1rem;
 }

@@ -76,6 +76,7 @@
                 shipElement.style.left = `${shipLeft +1}px`;
             }, 10);            
 
+            this.renderHeadsUp();
         }
 
         renderMessage(message) {
@@ -87,6 +88,14 @@
             messageElement.innerHTML = message;
 
             const timeout = setTimeout(() => {viewport.removeChild(messageElement)}, 2000);
+        }
+
+        renderHeadsUp() {
+            const headsUp = document.querySelector('#heads-up');
+            const currentPortIndex = this.ship.itinerary.ports.indexOf(this.ship.currentPort);
+            const nextPortindex = currentPortIndex + 1;
+            headsUp.innerHTML = `Current port: ${this.ship.currentPort.portName}`;
+            headsUp.innerHTML += `<br> Next port: ${this.ship.itinerary.ports[nextPortindex].portName}`;
         }
     }
 
