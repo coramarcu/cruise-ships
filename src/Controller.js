@@ -70,8 +70,6 @@
         }
 
         setSail() {
-            this.renderMessage(`Leaving ${this.ship.currentPort.portName}`);
-
             const currentPortIndex = this.ship.itinerary.ports.indexOf(this.ship.currentPort);
             const nextPortindex = currentPortIndex + 1;
             const nextPortElement = document.querySelector(`[data-port-index='${nextPortindex}']`);
@@ -81,6 +79,8 @@
             if (!nextPortElement) {
                 return this.renderMessage('End of line!')
             }
+
+            this.renderMessage(`Leaving ${this.ship.currentPort.portName}`);
 
             const shipElement = document.querySelector('#ship');
             const sailInterval = setInterval(() => {
