@@ -33,7 +33,7 @@
             ports.forEach((port, index) => {
                 const newPortElement = document.createElement('div');
                 newPortElement.className = 'port';
-                newPortElement.dataset.portName = port.name;
+                newPortElement.dataset.portName = port.portName;
                 newPortElement.dataset.portIndex = index;
 
                 portsElement.appendChild(newPortElement); 
@@ -41,6 +41,23 @@
                 const portsElementWidth = parseInt(portsElement.style.width, 10);
                 portsElement.style.width = `${portsElementWidth + 256}px`;
             });
+        }
+
+        renderNewPort(port, index) {
+            const portsElement = document.querySelector('#ports');
+            const newPortElement = document.createElement('div');
+            index = this.ship.itinerary.ports.length-1;
+            console.log(index);
+
+            newPortElement.className = 'port';
+            newPortElement.dataset.portName = port.portName;
+            newPortElement.dataset.portIndex = index;
+
+            portsElement.appendChild(newPortElement); 
+            console.log(portsElement);
+            
+            const portsElementWidth = parseInt(portsElement.style.width, 10);
+            portsElement.style.width = `${portsElementWidth + 256}px`;
         }
 
         renderShip() {
@@ -58,6 +75,8 @@
             const currentPortIndex = this.ship.itinerary.ports.indexOf(this.ship.currentPort);
             const nextPortindex = currentPortIndex + 1;
             const nextPortElement = document.querySelector(`[data-port-index='${nextPortindex}']`);
+            console.log('next port index: ' + nextPortindex);
+            console.log('next port : ' + nextPortElement);
 
             if (!nextPortElement) {
                 return this.renderMessage('End of line!')
@@ -74,7 +93,7 @@
                 }
 
                 shipElement.style.left = `${shipLeft +1}px`;
-            }, 10);            
+            }, 5);            
 
             this.renderHeadsUp();
         }
@@ -87,7 +106,7 @@
             viewport.appendChild(messageElement);
             messageElement.innerHTML = message;
 
-            const timeout = setTimeout(() => {viewport.removeChild(messageElement)}, 2000);
+            const timeout = setTimeout(() => {viewport.removeChild(messageElement)}, 1000);
         }
 
         renderHeadsUp() {
