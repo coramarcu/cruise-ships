@@ -10,16 +10,12 @@ function getFormData(event) {
 
     const formData = new FormData(form);
     const newPortName = formData.get('port-name');
-    console.log(newPortName);
     addNewPort(newPortName);
     form.reset();
 }
 
 function addNewPort(newPortName) {
     const newPort = new Port(newPortName);
-    console.log('added new port with name of: ' + newPortName);
-    console.log("actual object: " + JSON.stringify(newPort));
     itinerary.ports.push(newPort);
     controller.renderNewPort(newPort);
-    console.log(itinerary.ports);
 }
