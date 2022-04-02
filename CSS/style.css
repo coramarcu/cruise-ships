@@ -17,8 +17,6 @@ body {
     position: relative;
     overflow-x: auto;
     background-image: url("/images/water0.png");
-    border: 1px red solid;
-
 }
 
 #ports {
@@ -52,7 +50,6 @@ body {
     border: none;
     background-color: rgb(186, 104, 145);
     color: white;
-    border: 1px red solid;
 }
 
 #sailbutton:hover {
@@ -60,16 +57,15 @@ body {
 }
 
 #message{
-    display: block;
+    display: inline-block;
     position: sticky;
-    top: 256px;
     left: 50%;
     transform: translateX(-50%);
+    top: 256px;
     font-size: 1.2rem;
     background-color: bisque;
     text-align: center;
     padding: .55em;
-    border: 1px red solid;
 }
 
 #controls {

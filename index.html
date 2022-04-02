@@ -55,6 +55,7 @@
             const newPortName = formData.get('port-name');
             console.log(newPortName);
             addNewPort(newPortName);
+            form.reset();
         }
 
         function addNewPort(newPortName) {

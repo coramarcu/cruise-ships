@@ -106,7 +106,7 @@
             viewport.appendChild(messageElement);
             messageElement.innerHTML = message;
 
-            const timeout = setTimeout(() => {viewport.removeChild(messageElement)}, 1000);
+            const timeout = setTimeout(() => {viewport.removeChild(messageElement)}, 1280);
         }
 
         renderHeadsUp() {
